@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/layout :: layout(title=~{::title/text()},
+                    content=~{::#content}, pageScripts=~{})}">
+<head>
+<title>Mi Despensa - Ajustes usuario</title>
+</head>
+
+<body>
+	<div id="content">
+
+		<div class="container-principal">
+			<div class="form-container-login">
+				<div class="card-body-login">
+					<h3 class="form-title">Ajustes de usuario</h3>
+
+					<form method="post" th:action="@{/user/update}" th:object="${user}">
+						<input type="hidden" id="idUser" th:field="*{id}" />
+						<div class="mb-3">
+							<label for="validationMail" class="form-label">Correo</label> <input
+								type="email" class="form-control" id="validationMail"
+								placeholder="Correo electrónico" th:field="*{email}">
+						</div>
+						<div class="mb-3">
+							<label for="validationPass" class="form-label">Contraseña</label>
+							<input type="password" class="form-control" id="validationPass"
+								placeholder="Contraseña" th:field="*{password}">
+						</div>
+						<div class="mb-3">
+							<label for="validationPass" class="form-label">Confirmar
+								contraseña</label> <input type="password" class="form-control"
+								placeholder="Confirmar contraseña" th:field="*{confirmPassword}">
+						</div>
+						<p style="font-style: italic; margin-top: 5px; text-align: right;">*Puede
+							modificar el email, la contraseña o ambos</p>
+						<div class="mt-3 d-flex justify-content-center gap-3">
+							<button type="submit" class="btn btn-primary">Guardar</button>
+							<button type="reset" class="btn btn-warning">Reestablecer</button>
+						</div>
+					</form>
+
+					<div class="mt-3 d-flex justify-content-center gap-3">
+						<form method="post" th:action="@{/pantry/deleteAll}"
+							onsubmit="return confirm('¿Estás seguro de que deseas vaciar la la despensa?');">
+							<button type="submit" class="btn btn-danger">
+								<i class="bi bi-trash"></i> Despensa
+							</button>
+						</form>
+						<form method="post" th:action="@{/shoppingList/deleteAll}"
+							onsubmit="return confirm('¿Estás seguro de que deseas vaciar la lista de la compra?');">
+							<button type="submit" class="btn btn-danger">
+								<i class="bi bi-trash"></i> Lista compra
+							</button>
+						</form>
+					</div>
+
+					<div class="mt-3 d-flex justify-content-center">
+						<form method="post" th:action="@{/user/unsubscribe}"
+							onsubmit="return confirm('¿Estás seguro de que deseas darte de baja?. Tus productos y recetas serán eliminados.');">
+							<button type="submit" class="btn btn-danger" th:if=${user.id}!=1>Dar
+								de baja</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<th:block th:replace="~{fragments/footer}"></th:block>
+	</div>
+</body>
+</html>
+

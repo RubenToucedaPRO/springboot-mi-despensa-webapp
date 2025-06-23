@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	th:fragment="layout (title, content, pageScripts)">
+<head>
+<meta charset="UTF-8" />
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/css/styles.css}" rel="stylesheet">
+<link th:href="@{/css/bootstrap-icons.css}" rel="stylesheet" />
+<!--Para que se adapte en el movil-->
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Favicon	 -->
+<link rel="apple-touch-icon" sizes="180x180"
+	href="/ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32"
+	href="/ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16"
+	href="/ico/favicon-16x16.png">
+<link rel="manifest" href="/ico/site.webmanifest">
+
+<title><th:block th:insert="${title}" /></title>
+</head>
+
+
+<body>
+
+	<th:block th:replace="~{fragments/nav-form}"></th:block>
+	<main class="flex-grow-1">
+	
+		<div class="floating-element">
+			<i class="bi bi-basket" style="font-size: 80px;"></i>
+		</div>
+		<div class="floating-element">
+			<i class="bi bi-qr-code-scan" style="font-size: 60px;"></i>
+		</div>
+		<div class="floating-element">
+			<i class="bi bi-heart-fill" style="font-size: 70px;"></i>
+		</div>
+
+		<th:block th:replace="~{fragments/alert}"></th:block>
+
+		<div th:block th:insert="${content}"></div>
+
+	</main>
+
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

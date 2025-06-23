@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/layout-scanner :: layout-scanner(title=~{::title/text()},
+                    content=~{::#content}, pageScripts=~{})}">
+<head>
+<title>Lista de la compra</title>
+</head>
+
+<body>
+	<div id="content">
+	
+		<a href="/pantry/list" class="floating-button"
+			title="Ir a la despensa"> <i class="bi bi-house"></i>
+		</a>
+
+		<div
+			th:replace="~{fragments/products-table:: products-table(
+		    'Lista de la compra',
+		    ${productDTOs},
+		    ${context},
+		    ${user},
+		    ${page},
+		    ${totalPages},
+		    ${size})}">
+		</div>
+
+	</div>
+</body>
+</html>

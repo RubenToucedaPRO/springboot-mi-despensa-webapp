@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/layout :: layout(title=~{::title/text()},
+                    content=~{::#content}, pageScripts=~{})}">
+<head>
+<title>Producto</title>
+</head>
+
+<body>
+	<div id="content">
+	
+		<div
+			th:replace="~{fragments/product-view::product-view(
+		    'Producto',
+		    ${productDTO},
+		    ${context},
+		    ${idUser},
+		    ${page},
+		    ${size})}">
+		</div>
+
+	</div>
+</body>
+</html>

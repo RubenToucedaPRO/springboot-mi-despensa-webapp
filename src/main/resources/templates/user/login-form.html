@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/layout-without-nav :: layout-without-nav(title=~{::title/text()},
+                    content=~{::#content}, pageScripts=~{})}">
+<head>
+<title>Mi Despensa - Inicio sesión</title>
+</head>
+<body>
+
+	<div id="content">
+
+		<div class="container-principal">
+			<div class="form-container-login">
+				<div class="card-body-login">
+					<h3 class="form-title">
+						<i class="bi bi-basket2 me-2"></i> Inicio sesión
+					</h3>
+
+					<form method="post" th:action="@{/user/login}">
+						<div class="mb-3">
+							<input type="text" class="form-control" name="username"
+								placeholder="📧 Correo electrónico" required>
+						</div>
+
+						<div class="mb-3">
+							<input type="password" class="form-control" name="password"
+								placeholder="🔒 Contraseña" required>
+						</div>
+						<div class="text-center">
+							<button type="submit"
+								class="btn btn-modern btn-modern-primary w-100">
+								<i class="bi bi-box-arrow-in-right me-2"></i>Acceder
+							</button>
+						</div>
+					</form>
+					
+					<div class="form-divider">
+						<span>o</span>
+					</div>
+
+					<div class="mt-3 text-center">
+						<a class="btn btn-modern btn-modern-secondary w-100"
+							th:href="@{/user/register-form}"> <i
+							class="bi bi-person-plus me-2"></i>Registrarse
+						</a>
+					</div>
+					<div class="mt-3 btn-link-modern">
+						<a th:href="@{/user/forgot-password-form}">¿Olvidaste tu
+							contraseña?</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
+

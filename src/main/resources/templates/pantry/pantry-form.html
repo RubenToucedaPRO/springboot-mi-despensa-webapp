@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/layout :: layout(title=~{::title/text()},
+                    content=~{::#content}, pageScripts=~{})}">
+<head>
+<title>Producto personalizado</title>
+</head>
+<!-- Pantalla de edicion producto usuarios con role user -->
+<body>
+	<div id="content">
+	
+		<div
+			th:replace="~{fragments/productDTO-form::productDTO-form(
+		    'Producto',
+		    ${productDTO},
+		    ${context},
+		    ${page},
+		    ${size})}">
+		</div>
+
+	</div>
+</body>
+</html>

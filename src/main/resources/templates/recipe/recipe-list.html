@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/layout-recipes :: layout-recipes(title=~{::title/text()},
+                    content=~{::#content}, pageScripts=~{})}">
+<head>
+<title>Recetas</title>
+</head>
+
+<body>
+
+	<div id="content">
+
+		<div
+			th:replace="~{fragments/recipes-table:: recipes-table(
+		    'Recetas',
+		    ${recipesDTO},
+		    ${difficulties},
+		    ${selectedDifficulty},
+		    ${categories},
+		    ${selectedCategory},
+		    ${ingredients},
+		    ${exact})}">
+		</div>
+
+	</div>
+</body>
+</html>

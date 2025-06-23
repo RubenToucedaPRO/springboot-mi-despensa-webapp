@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/layout-scanner :: layout-scanner(title=${pageTitle},
+                    content=~{::#content}, pageScripts=~{})}">
+<head>
+<title th:text="${pageTitle}">Productos</title>
+</head>
+
+<body>
+	<div id="content">
+
+		<div
+			th:replace="~{fragments/products-table:: products-table(
+		    ${pageTitle},
+		    ${productDTOs},
+		    ${context},
+		    ${idUser},
+		    ${page},
+		    ${totalPages},
+		    ${size})}">
+		</div>
+
+		<div class="mt-3 d-flex justify-content-center" th:if="${pageTitle}==Productos">
+			<form method="post" th:action="@{/products/updateOpenFoodFacts}">
+				<button type="submit" class="btn btn-danger" title="Actualiza todos los productos desde OpenFoodsFacts" >Actualizar productos de OpenFoodFacts</button>
+			</form>
+		</div>
+
+	</div>
+</body>
+</html>

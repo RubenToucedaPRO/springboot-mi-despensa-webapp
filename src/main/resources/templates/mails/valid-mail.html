@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div
+	style="font-family: Arial, sans-serif; font-size: 14px; max-width: 600px; margin: 0 auto;">
+	<h2 style="color: #007BFF;">Bienvenido a <span>Mi Despensa</span>.</h2>
+	<p>Valide su cuenta de correo.</p>
+	<p>
+		Haz clic en el siguiente botón para validar su correo en la
+		aplicación web <strong>Mi Despensa</strong>:
+	</p>
+	<a th:href="${resetUrl}"
+		style="display: inline-block; padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">
+		Validación correo </a>
+	<p style="margin-top: 20px;">Si no solicitaste esto, ignora el
+		correo y disculpe las molestias.</p>
+	<p style="margin-top: 20px;">Dispone de 24 horas para la
+		validación, en caso de no validar la cuenta en ese periodo
+		debe realizar un nuevo registro en la aplicación.</p>
+	<hr style="border: none; border-top: 1px solid #ccc; margin: 20px 0;">
+	<p style="font-size: 16px; color: #777;">
+		Saludos,<br>El equipo de <strong>Mi Despensa</strong>
+	</p>
+</div>
+</html>

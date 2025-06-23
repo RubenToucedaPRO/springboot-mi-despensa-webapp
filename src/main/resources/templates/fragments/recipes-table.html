@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div id="fragment"
+	th:fragment="recipes-table(title,recipesDTO,difficulties,selectedDifficulty,categories,selectedCategory,ingredients,exact)">
+
+	<div class="container mt-4">
+		<div class="card mb-4">
+			<div class="card-header">
+				<h5 class="card-title" th:text="${title}">Título</h5>
+			</div>
+			<div class="card-body">
+				<a th:href="@{/recipes/new}" class="btn btn-primary mb-3">Agregar
+					Receta</a>
+				<div id="content">
+					<div
+						th:replace="~{fragments/recipes-filter:: recipes-filter(
+								    ${difficulties},
+								    ${selectedDifficulty},
+								    ${categories},
+								    ${selectedCategory},
+								    ${ingredients},
+								    ${exact})}"></div>
+				</div>
+
+				<div class="row mt-3">
+					<div class="col-md-4" th:each="recipeDTO : ${recipesDTO}">
+						<div class="card mb-4 shadow-sm">
+							<a th:href="@{/recipes/view(id=${recipeDTO.id})}"
+								class="text-decoration-none"> <img class="card-img-top"
+								th:src="@{https://res.cloudinary.com/dsejfybvk/image/upload/v1746049192/{image}.png(image=${recipeDTO.image})}"
+								alt="Imagen de la receta">
+							</a>
+							<div class="card-body">
+								<h5 class="card-title" th:text="${recipeDTO.title}"></h5>
+								<p class="card-text">
+									<!-- Dificultad -->
+									<strong>Dificultad:</strong> <span
+										th:text="${recipeDTO.difficulty.title}"></span><br>
+									<!-- Categoria -->
+									<strong>Categoria:</strong> <span
+										th:text="${recipeDTO.category.title}"></span><br>
+									<!-- Tiempo de preparación -->
+									<strong>Tiempo de preparación:</strong> <span
+										th:text="${recipeDTO.prepTime}"></span><br>
+									<!-- Tiempo de cocinado -->
+									<strong>Tiempo de cocinado:</strong> <span
+										th:text="${recipeDTO.cookTime}"></span><br>
+									<!-- Ingredientes -->
+									<strong>Ingredientes:</strong> <span
+										th:each="ingredientName : ${#strings.arraySplit(recipeDTO.ingredientNames, ',')}"
+										th:text="${ingredientName}" class="badge bg-secondary me-1">
+									</span> <br>
+									<!-- Tags -->
+									<strong>Tags:</strong> <span
+										th:each="tagName : ${#strings.arraySplit(recipeDTO.tagNames, ',')}"
+										th:text="${tagName}" class="badge bg-secondary me-1"> </span>
+								</p>
+								<a th:href="@{/recipes/{id}/edit(id=${recipeDTO.id})}"
+									th:if="${recipeDTO.idUser == user  || user ==1}" class="btn btn-success"><i
+									class="bi bi-pencil"></i></a>
+								<!-- Icono eliminar -->
+								<form th:action="@{/recipes/{id}/delete(id=${recipeDTO.id})}"
+								th:if="${recipeDTO.idUser == user  || user ==1}" 
+									method="post" class="d-inline">
+									<button type="submit" class="btn btn-danger">
+										<i class="bi bi-trash"></i>
+									</button>
+								</form> 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

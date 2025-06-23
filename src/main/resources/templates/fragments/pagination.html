@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+	
+<div id="fragment"
+	th:fragment="pagination(context, currentPage, totalPages, size)">
+	<ul class="pagination">
+		<!-- Botón Anterior -->
+		<li class="page-item" th:if="${currentPage > 0}"><a
+			class="page-link"
+			th:href="@{'/'+${context}+'/list?page='+(${currentPage} - 1)+'&size='+${size}}">Ant.</a>
+		</li>
+
+		<!-- Páginas numeradas -->
+		<li class="page-item"
+			th:each="i : ${#numbers.sequence(0, totalPages - 1)}"><a
+			class="page-link"
+			th:href="@{'/' + ${context} + '/list?page=' + ${i} + '&size=' + ${size}}"
+			th:text="${i + 1}"></a></li>
+
+		<!-- Botón Siguiente -->
+		<li class="page-item" th:if="${currentPage < totalPages - 1}"><a
+			class="page-link"
+			th:href="@{'/'+${context}+'/list?page='+(${currentPage} + 1)+'&size='+${size}}">Sig.</a>
+		</li>
+	</ul>
+</div>

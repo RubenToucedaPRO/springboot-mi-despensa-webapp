@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/layout :: layout(title=~{::title/text()},
+                    content=~{::#content}, pageScripts=~{})}">
+<head>
+<title>Receta</title>
+</head>
+
+
+<body>
+	<div id="content">
+
+		<div
+			th:replace="~{fragments/recipe-view::recipe-view(
+			'Producto',
+		    ${recipeDTO},
+		    ${user})}">
+		</div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "properties": [
+    {
+      "name": "server.url.mail",
+      "type": "java.lang.String",
+      "description": "URL base del servidor para generar enlaces en correos",
+      "defaultValue": "https://localhost:8081"
+    },
+    {
+      "name": "app.upload.dir",
+      "type": "java.lang.String",
+      "description": "Ruta donde se guardan los ficheros subidos"
+    },
+    {
+      "name": "app.default.page.size.products",
+      "type": "java.lang.Integer",
+      "description": "Elementos por pagina productos admin"
+    },
+    {
+      "name": "app.default.page.size",
+      "type": "java.lang.Integer",
+      "description": "Elementos por pagina"
+    }
+  ]
+}

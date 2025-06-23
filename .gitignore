@@ -1,0 +1,49 @@
+# Directorios y archivos de Eclipse
+.metadata/
+.classpath
+.project
+.factorypath
+.settings/
+target/
+
+# Directorios y archivos de IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+out/
+
+# Directorios y archivos de Visual Studio Code
+.vscode/
+
+# Archivos generados por Maven
+.mvn/
+mvnw*
+
+# Archivos generados por Gradle
+gradle/
+.gradle/
+build/
+
+# Archivos de logs y temporales
+logs/
+*.log
+tmp/
+
+# Archivos de configuración de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos sensibles y credenciales
+application.properties
+application.yml
+#.env
+
+# Archivos de compilación de Java
+*.class
+#*.jar
+*.war
+*.ear
+
+# Otros archivos innecesarios
+!src/main/**/.gitkeep
+!src/test/**/.gitkeep

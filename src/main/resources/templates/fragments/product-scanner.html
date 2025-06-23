@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div class="modal fade" id="agregarProductoModal" tabindex="-1"
+	aria-labelledby="modalTitle" aria-hidden="true"
+	th:fragment="product-scanner(context, productDTO,page,size)">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalTitle">Agregar Producto</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Cerrar"></button>
+			</div>
+			<div class="modal-body">
+				<h3>Encuadre el codigo de barras</h3>
+
+				<!-- Contenedor donde se mostrará el escáner -->
+				<div id="barcode-scanner">
+					<!-- Superposición de área de escaneo (recuadro) -->
+					<div class="qrbox-overlay"></div>
+				</div>
+
+				<!-- Elemento para mostrar el resultado del escaneo -->
+				<p>
+					Resultado: <span id="resultRead">Esperando...</span>
+				</p>
+
+				<!-- Formulario para enviar el código de barras lectura auto -->
+				<form th:action="@{/products/scanner}" method="post"
+					id="barcodeForm">
+					<!-- Input donde se recibe de javascript el barcodeInput -->
+					<input type="hidden" id="barcodeInput" name="barcode" /> <input
+						type="hidden" name="context" th:value="${context}" />
+					<!-- Button que se activa desde javascript con el submitButton -->
+					<button type="submit" id="submitButton" style="display: none;">Enviar</button>
+				</form>
+				<!-- Formulario para enviar el código de barras con datos escritos en manual -->
+				<form
+					th:action="@{/{context}/new(context=${context},page=${page}, size=${size})}"
+					th:object="${productDTO}" method="post">
+					<input type="hidden" id="idUser"
+						th:value="${#authentication.principal.id}" /> <input
+						type="hidden" id="idUser" th:field="*{idUser}"
+						th:value="${#authentication.principal.id}" />
+					<div class="mb-3">
+						<label for="barcode" class="form-label">Codigo de barras:</label>
+						<input type="text" id="barcode" class="form-control"
+							placeholder="Código de barras o identificador único"
+							th:field="*{barcode}" required />
+					</div>
+					<div class="mb-3">
+						<label for="title" class="form-label">Nombre:</label> <input
+							type="text" id="title" class="form-control" th:field="*{title}"
+							placeholder="Nombre del producto" required />
+					</div>
+					<div class="mb-3">
+						<label for="brand" class="form-label">Marca:</label> <input
+							type="text" id="brand" class="form-control" th:field="*{brand}" />
+					</div>
+					<div class="mb-3">
+						<label for="amount" class="form-label">Cantidad:</label> <input
+							type="text" id="amount" class="form-control" th:field="*{amount}" />
+					</div>
+					<div class="mb-3" th:if="${context}!='products'">
+						<label for="unity" class="form-label">Unidades:</label> <input
+							type="number" id="unity" class="form-control" th:field="*{unity}" />
+					</div>
+					<button type="submit" class="btn btn-success">Guardar</button>
+					<button type="reset" class="btn btn-warning">Borrar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

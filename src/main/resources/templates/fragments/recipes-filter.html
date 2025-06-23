@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div id="fragment"
+	th:fragment="recipes-filter(difficulties,selectedDifficulty,categories,selectedCategory,ingredients,exact)">
+
+	<div class="d-flex flex-wrap flex-md-nowrap">
+
+		<div>
+			<form th:action="@{/recipes/list}" th:method="get">
+				<div class="d-flex flex-wrap gap-2 align-items-center">
+					<!--Filtro dificultad -->
+					<div class="d-flex align-items-center gap-1">
+						<label for="category" class="form-label w-auto">Dificultad:</label>
+						<!-- Selector -->
+						<select name="difficulty" class="form-select w-auto">
+							<option value="0">Todas</option>
+							<option th:each="difficulty:${difficulties}"
+								th:value="${difficulty.id}" th:text="${difficulty.title}"
+								th:selected="${selectedDifficulty!=null and selectedDifficulty==difficulty.id}"></option>
+						</select>
+					</div>
+					<!--Filtro categoria -->
+					<div class="d-flex align-items-center gap-1">
+						<label for="category" class="form-label w-auto">Categoría:</label>
+						<!-- Selector -->
+						<select name="category" class="form-select w-auto">
+							<option value="0">Todas</option>
+							<option th:each="category:${categories}"
+								th:value="${category.id}" th:text="${category.title}"
+								th:selected="${selectedCategory!=null and  selectedCategory==category.id}"></option>
+						</select>
+					</div>
+					<!-- Selector -->
+					<div class="flex-grow-1">
+						<input type="text" class="form-control ingredients"
+							name="ingredients" placeholder="Ingredientes separados por comas"
+							th:value=${ingredients} aria-label="Ingredientes">
+					</div>
+					<!-- Condición todos los ingredientes en la receta o no -->
+					<div class="d-flex align-items-center gap-1">
+						<select class="form-select w-auto" id="floatingSelectGrid"
+							name="exact" required>
+							<option value="False" th:selected="${exact == false}">Con
+								alguno</option>
+							<option value="True" th:selected="${exact == true}">Con
+								todos</option>
+						</select>
+					</div>
+					<!-- Botón de envío -->
+					<button type="submit" class="btn btn-primary">Filtrar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

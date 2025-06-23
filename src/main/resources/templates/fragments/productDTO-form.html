@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div
+	th:fragment="productDTO-form(title, productDTO, context, page, size)">
+	<div class="container mt-4">
+		<div class="card mb-4">
+			<div class="card-header">
+				<h5 class="card-title">Detalles del Producto</h5>
+			</div>
+			<div class="card-body">
+				<h2
+					th:text="${productDTO.title == null} ? 'Agregar Nuevo Producto' : 'Editar Producto'"></h2>
+				<form
+					th:action="${context == 'products' ? '/products/edit?page=' + (page ?: 0) + '&size=' + (size ?: 10) : '/pantry/edit?page=' + (page ?: 0) + '&size=' + (size ?: 10)}"
+					th:object="${productDTO}" method="post">
+					<input type="hidden" th:if="${context!='products'}" id="idUser"
+						th:field="*{idUser}" /> <input type="hidden" th:field="*{id}" />
+					<input type="hidden" name="context" th:value="${context}">
+					<input type="hidden" id="image" th:field="*{image}">
+					<input type="hidden" id="unity" th:field="*{unity}">
+					<div class="mb-3">
+						<label for="id" class="form-label">Codigo de barras:</label> <input
+							type="text" id="barcode" class="form-control"
+							th:field="*{barcode}" required/>
+					</div>
+					<div class="mb-3">
+						<label for="title" class="form-label">Nombre:</label> <input
+							type="text" id="title" class="form-control" th:field="*{title}" required/>
+					</div>
+					<div class="mb-3">
+						<label for="brand" class="form-label">Marca:</label> <input
+							type="text" id="brand" class="form-control" th:field="*{brand}" />
+					</div>
+					<div class="mb-3">
+						<label for="idUser" th:if="${context=='products'}"
+							class="form-label">IdUsuario:</label> <input type="text"
+							id="idUser" class="form-control" th:if="${context=='products'}"
+							th:field="*{idUser}" oninput="this.value = this.value.replace(/[^1]/g, '').substring(0, 1);" required/>
+					</div>
+					<div class="mb-3">
+						<label for="amount" class="form-label">Cantidad:</label> <input
+							type="text" id="amount" class="form-control" th:field="*{amount}" />
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<button type="reset" class="btn btn-warning">Restablecer</button>
+					<!--boton-->
+					<a class="btn btn-secondary"
+						 th:href="'/' + ${context} + '/list?page=' + (${page} ?: 0)">Volver </a>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

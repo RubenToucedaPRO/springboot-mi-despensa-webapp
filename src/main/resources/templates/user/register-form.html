@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/layout-without-nav :: layout-without-nav(title=~{::title/text()},
+                    content=~{::#content}, pageScripts=~{})}">
+<head>
+<title>Mi Despensa - Registro</title>
+</head>
+<body>
+	<div id="content">
+		<div class="container-principal">
+			<div class="form-container-login">
+				<div class="card-body-login">
+					<h3 class="form-title">
+						<i class="bi bi-person-plus me-2"></i> Registro
+					</h3>
+
+					<form method="post" th:action="@{/user/register}"
+						th:object="${user}">
+						<div class="mb-3">
+							<input type="email" th:field="*{email}" class="form-control"
+								placeholder="📧 Correo electrónico" required>
+						</div>
+						<div class="mb-3">
+							<input type="password" th:field="*{password}"
+								class="form-control" placeholder="🔒 Contraseña" required>
+						</div>
+						<div class="mb-3">
+							<input type="password" th:field="*{confirmPassword}"
+								class="form-control" placeholder="🔒 Confirmar contraseña"
+								required>
+						</div>
+
+						<div class="mb-4">
+							<div class="form-check-modern">
+								<input class="form-check-input-modern" type="checkbox" value=""
+									id="invalidCheck" required> <label
+									class="form-check-label-modern" for="invalidCheck"> He
+									leído y acepto la <a href="/privacy" class="btn-link-modern">política
+										de privacidad</a>
+								</label>
+								<div class="invalid-feedback">Debes aceptar nuestra
+									política de privacidad para continuar.</div>
+							</div>
+						</div>
+
+						<div class="text-center mb-4">
+							<button type="submit"
+								class="btn btn-modern btn-modern-primary w-100">
+								<i class="bi bi-person-check me-2"></i> Crear cuenta
+							</button>
+						</div>
+					</form>
+
+					<div class="form-divider">
+						<span>o</span>
+					</div>
+
+					<div class="text-center">
+						<a class="btn btn-modern btn-modern-secondary w-100"
+							th:href="@{/user/login-form}"> <i
+							class="bi bi-box-arrow-in-right me-2"></i> Ya tengo cuenta
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

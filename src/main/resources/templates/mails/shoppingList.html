@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div style="font-family: Arial, sans-serif; font-size:14px; max-width: 600px; margin: 0 auto;">
+	<h2 style="color: #007BFF;">Tu Lista de la compra</h2>
+	<table>
+		<thead>
+			<tr style="background-color: #f2f2f2;">
+				<th scope="col"
+					style="padding: 10px; text-align: left; border-bottom: 1px solid white;"></th>
+				<th scope="col"
+					style="padding: 10px; text-align: left; border-bottom: 1px solid white;">Nombre</th>
+				<th scope="col"
+					style="padding: 10px; text-align: left; border-bottom: 1px solid white;">Marca</th>
+				<th scope="col"
+					style="padding: 10px; text-align: left; border-bottom: 1px solid white;">Tamaño</th>
+				<th scope="col"
+					style="padding: 10px; text-align: left; border-bottom: 1px solid white;">Unidades</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="productDTO:${productDTOs}"
+				>
+                <input type="checkbox"/>
+				<td style="padding: 10px; "
+					th:text="${productDTO.title}"></td>
+				<td style="padding: 10px;"
+					th:text="${productDTO.brand}"></td>
+				<td style="padding: 10px;;"
+					th:text="${productDTO.amount}"></td>
+				<td style="padding: 10px; "
+					th:text="${productDTO.unity}"></td>
+				<td style="padding: 10px;">
+            </td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p style="font-size: 16px; color: #777;">
+		Gracias por usar <strong>Mi Despensa</strong>.
+	</p>
+</div>
+</html>

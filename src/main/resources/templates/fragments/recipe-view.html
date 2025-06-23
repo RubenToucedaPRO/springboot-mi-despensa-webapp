@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="recipe-view(title,recipeDTO,user)">
+	<div class="container mt-4">
+		<div class="card mb-4">
+			<div class="card-header">
+				<h5 class="card-title">Detalles de la Receta</h5>
+			</div>
+			<div class="card-body">
+				<h2 th:text="${recipeDTO.title}"></h2>
+				<div class="d-flex flex-column flex-lg-row gap-3">
+					<!-- Div de la Imagen -->
+					<div style="width: 100%; max-width: 500px;">
+						<img th:src="@{https://res.cloudinary.com/dsejfybvk/image/upload/v1746049192/{image}.png(image=${recipeDTO.image})}"
+							alt="Imagen de la receta" class="rounded shadow img-fluid"
+							/>
+					</div>
+
+					<!-- Div de los demás datos -->
+					<div>
+						<p>
+							<strong>Categoría:</strong> <span
+								th:text="${recipeDTO.category.title}"></span>
+						</p>
+						<p>
+							<strong>Dificultad:</strong> <span
+								th:text="${recipeDTO.difficulty.title}"></span>
+						</p>
+						<p>
+							<strong>Tiempo de preparación:</strong> <span
+								th:text="${recipeDTO.prepTime}"></span> minutos
+						</p>
+						<p>
+							<strong>Tiempo de cocción:</strong> <span
+								th:text="${recipeDTO.cookTime}"></span> minutos
+						</p>
+						<p>
+							<strong>Ingredientes:</strong> <span
+								th:each="ingredientName : ${#strings.arraySplit(recipeDTO.ingredientNames, ',')}"
+								th:text="${ingredientName}" class="badge bg-secondary me-1"> </span>
+						</p>
+						<p>
+							<strong>Etiquetas:</strong> <span
+								th:each="tagName : ${#strings.arraySplit(recipeDTO.tagNames, ',')}"
+								th:text="${tagName}" class="badge bg-secondary me-1"> </span>
+						</p>
+						<p th:if="${recipeDTO.idUser == user}">
+							<strong>Compartida:</strong> <span
+								th:text="${recipeDTO.shared} ? 'Sí' : 'No'"></span>
+						</p>
+						<p>
+							<strong>Elaboración:</strong> <span
+								th:text="${recipeDTO.elaboration}"></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!--boton-->
+		<a class="btn btn-success" th:if="${recipeDTO.idUser == user || user ==1}"
+			th:href="@{/recipes/{id}/edit(id=${recipeDTO.id})}">Editar</a>
+
+		<!--boton eliminar -->
+		<form th:action="@{/recipes/{id}/delete(id=${recipeDTO.id})}" th:if="${recipeDTO.idUser == user || user ==1}"
+			method="post" class="d-inline">
+			<button type="submit" class="btn btn-danger">
+				Borrar
+			</button>
+		</form> 
+
+		<!--boton-->
+		<a class="btn btn-secondary" th:href="@{/recipes/list}">Volver</a>
+	</div>
+</div>

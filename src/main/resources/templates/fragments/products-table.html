@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<div id="fragment"
+	th:fragment="products-table(title, productDTOs, context, idUser, page, totalPages, size)">
+	<div class="container mt-4">
+		<div class="card mb-4">
+			<div class="card-header"
+				style="display: flex; align-items: center; justify-content: space-between;">
+				<h5 class="card-title" th:text="${title}">Título</h5>
+				<a href="/shoppingList/sendMail" th:if="${context=='shoppingList'}"
+					title="Enviar lista compra al correo"> <i
+					class="bi bi-envelope-arrow-down fs-4"></i>
+				</a>
+			</div>
+			<div class="card-body">
+				<div class="d-flex justify-content-between">
+					<!--Llamada al modal del scanner -->
+					<button class="btn btn-primary" data-bs-toggle="modal"
+						data-bs-target="#agregarProductoModal">+ producto</button>
+					<div
+						th:replace="~{fragments/pagination:: pagination(${context},
+																    ${page},
+																    ${totalPages},
+																    ${size})}">
+					</div>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-hover rounded shadow-sm">
+						<thead>
+							<tr>
+								<th th:if="${context=='products'}" scope="col" style="width: 5%">Id</th>
+								<th th:if="${context=='products'}" scope="col"
+									style="width: 10%">CB</th>
+								<th th:if="${context=='products'}" scope="col"
+									style="width: 10%">Usuario</th>
+								<th th:if="${context=='products'}" scope="col"
+									style="width: 10%">Imagen</th>
+								<th scope="col" style="width: 30%">Nombre</th>
+								<th scope="col" style="width: 20%">Marca</th>
+								<th th:if="${context=='products'}" scope="col"
+									style="width: 40%">Cantidad</th>
+								<th th:if="${context!='products'}" scope="col">Un</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="productDTO:${productDTOs}">
+								<td th:if="${context=='products'}" th:text="${productDTO.id}"></td>
+								<td th:if="${context=='products'}"
+									th:text="${productDTO.barcode}"></td>
+								<td th:if="${context=='products'}"
+									th:text="${productDTO.idUser}"></td>
+								<td th:if="${context=='products'}"
+									th:onclick="|location.href='@{/products/view(id=${productDTO.id}, context=${context}, user=${user}, page=${page}, size=${size})}'|"
+									style="cursor: pointer;"><img
+									th:if="${productDTO.image != null and productDTO.image != ''}"
+									th:src="${productDTO.image}" alt="Imagen del producto"
+									class="rounded shadow" style="width: 100%; max-width: 40px;" />
+								</td>
+								<td th:text="${productDTO.title}"
+									th:onclick="|location.href='@{/products/view(id=${productDTO.id}, context=${context}, user=${user}, page=${page}, size=${size})}'|"
+									style="cursor: pointer;"></td>
+								<td class="truncable" th:text="${productDTO.brand}"></td>
+								<td th:if="${context=='products'}"
+									th:text="${productDTO.amount}"></td>
+								<td th:if="${context!='products'}">
+									<form
+										th:action="@{${context == 'pantry'} ? '/pantry/updateUnits'+ '?page=' + ${page} + '&size=' + ${size} : '/shoppingList/updateUnits'+ '?page=' + ${page} + '&size=' + ${size}}"
+										method="post" class="d-flex flex-column flex-sm-row">
+										<input type="text" hidden="true" class="form-control"
+											name="id" th:value="${productDTO.id}"> <input
+											type="number" class="form-control" name="unity"
+											th:value="${productDTO.unity}" min="0"
+											style="width: 50px; height: 40px; padding: 0; text-align: center;" />
+										<button type="submit" class="btn btn-primary" style="width: 42px; height: 38px; margin-top:3px; margin-left:5px;">
+											<i class="bi bi-save"></i>
+										</button>
+									</form>
+								</td>
+								<td>
+									<!-- Icono eliminar -->
+									<form th:action="@{/{context}/{id}/delete(context=${context},id=${productDTO.id})}" 
+										method="post" class="d-inline">
+										<input type="hidden" name="page" th:value="${page}" /> <input
+											type="hidden" name="size" th:value="${size}" />
+										<button type="submit" class="btn btn-danger">
+											<i class="bi bi-trash"></i>
+										</button>
+									</form> 
+									<!-- Icono añadir a la despensa desde la lista de la compra -->
+									<form th:if="${context == 'shoppingList'}"
+										th:action="@{/pantry/{id}/addFromSL(id=${productDTO.id})}"
+										method="post" class="d-inline">
+
+										<input type="hidden" name="page" th:value="${page}" /> <input
+											type="hidden" name="size" th:value="${size}" />
+
+										<button type="submit" class="btn btn-success">
+											<i class="bi bi-house-add"></i>
+										</button>
+									</form> 
+									<!-- Añadir desde despensa a la lista de la compra -->
+									<form th:if="${context == 'pantry'}"
+										th:action="@{/shoppingList/{id}/add(id=${productDTO.id})}"
+										method="post" class="d-inline">
+
+										<input type="hidden" name="page" th:value="${page}" /> <input
+											type="hidden" name="size" th:value="${size}" />
+
+										<button type="submit" class="btn btn-success">
+											<i class="bi bi-cart"></i>
+										</button>
+									</form>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

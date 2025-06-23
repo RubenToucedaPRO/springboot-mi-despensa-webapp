@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div
+	th:fragment="product-view(title, productDTO, context,user,page,size)">
+	<div class="container mt-4">
+		<div class="card mb-4">
+			<div class="card-header">
+				<h5 class="card-title">Detalles del Producto</h5>
+			</div>
+			<div class="card-body">
+				<h2 th:text="${productDTO.title}"></h2>
+				<div class="d-flex flex-column flex-lg-row gap-4">
+					<!-- Imagen -->
+					<div>
+						<img
+							th:if="${productDTO.image != null and productDTO.image != ''}"
+							th:src="${productDTO.image}" alt="Imagen del producto"
+							class="rounded shadow" style="width: 100%; max-width: 200px;" />
+					</div>
+
+					<div class="d-flex flex-column">
+
+						<p>
+							<strong>Codigo de barras:</strong> <span
+								th:text="${productDTO.barcode}"></span>
+						</p>
+						<p>
+							<strong>Nombre:</strong> <span th:text="${productDTO.title}"></span>
+						</p>
+						<p>
+							<strong>Marca:</strong> <span th:text="${productDTO.brand}"></span>
+						</p>
+						<p>
+							<strong>Cantidad:</strong> <span th:text="${productDTO.amount}"></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--boton edicion producto visible para admin-->
+		<a class="btn btn-success" th:if="${context == 'products'}"
+			th:href="@{/products/{id}/edit(id=${productDTO.id}, context=${context}, page=${page},size=${size})}">Editar</a>
+		<!--boton edicion producto visible para usuario si es personalizado de el mismo-->
+		<a class="btn btn-success"
+			th:if="${context != 'products' && productDTO.idUser == user}"
+			th:href="@{/pantry/{id}/edit(id=${productDTO.id}, context=${context}, page=${page},size=${size})}">Editar</a>
+
+		<!--boton borrar producto -->
+		<form
+			th:action="@{/{context}/{id}/delete(context=${context},id=${productDTO.id})}"
+			th:if="${context == 'products' || productDTO.idUser == user}"
+			method="post" class="d-inline">
+			<input type="hidden" name="page" th:value="${page}" /> <input
+				type="hidden" name="size" th:value="${size}" />
+			<button type="submit" class="btn btn-danger">Borrar</button>
+		</form>
+
+		<!--boton volver-->
+		<a class="btn btn-secondary"
+			th:href="@{/{context}/list?page={page}&size={size}(context=${context},page=${page},size=${size})}">Volver</a>
+	</div>
+</div>

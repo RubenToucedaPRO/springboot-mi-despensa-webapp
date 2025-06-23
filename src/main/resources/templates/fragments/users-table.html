@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div id="fragment"
+	th:fragment="users-table(title, context, users, currentPage, totalPages, size)">
+	<div class="container mt-4">
+		<div class="card mb-4">
+			<div class="card-header">
+				<h5 class="card-title" th:text="${title}">Título</h5>
+			</div>
+			<div class="card-body">
+				<div class="d-flex justify-content-end">
+					<div
+						th:replace="~{fragments/pagination:: pagination(${context},
+																    ${currentPage},
+																    ${totalPages},
+																    ${size})}">
+					</div>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-hover rounded shadow-sm ">
+						<thead>
+							<tr>
+								<th scope="col">Id</th>
+								<th scope="col">Correo</th>
+								<th scope="col">Ultima conexion</th>
+								<th scope="col">Role</th>
+								<th scope="col">Acciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="user:${users}">
+								<td th:text="${user.id}"></td>
+								<td th:text="${user.email}"></td>
+								<td th:text="${user.lastConnection}"></td>
+								<td th:text="${user.role}"></td>
+								<td><form th:if="${user.id} != 1"
+										th:action="@{/user/{id}/delete(id=${user.id})}" method="post"
+										onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
+										<button type="submit" class="btn btn-danger">
+											<i class="bi bi-trash"></i>
+										</button>
+									</form></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

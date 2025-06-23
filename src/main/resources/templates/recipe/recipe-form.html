@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/layout-recipes :: layout-recipes(title=~{::title/text()},
+                    content=~{::#content}, pageScripts=~{})}">
+
+<head>
+<title>Nueva receta</title>
+</head>
+
+<body>
+	<div id="content">
+		
+		<div
+			th:replace="~{fragments/recipe-form:: recipe-form(
+		 		    'Nueva receta',
+		 		    ${recipeDTO},  		    
+		 		    ${categories},
+		 		    ${difficulties})}">
+		</div>
+		
+	</div>
+</body>
+</html>
