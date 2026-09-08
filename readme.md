@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/PantallaPrincipal.PNG?raw=true" alt="Mi Despensa" width="75%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/PantallaPrincipal.PNG?raw=true" alt="Mi Despensa" width="75%">
 </p>
 
 <h1 align="center">Mi Despensa</h1>
@@ -109,7 +109,7 @@ La aplicación también incorpora una sección de **recetas colaborativas**, don
 La aplicación está organizada siguiendo una **arquitectura por capas**, separando las responsabilidades de cada parte del sistema:
 
 <p align="center">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/Programa.PNG?raw=true" alt="Estructura" width="30%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/Programa.PNG?raw=true" alt="Estructura" width="30%">
 </p>
 
 ### Backend (Spring Boot)
@@ -341,11 +341,11 @@ mvn test
 ```
 
 <p align="center">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/TestUnitariosProductService.PNG?raw=true" alt="Tests unitarios" width="50%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/TestUnitariosProductService.PNG?raw=true" alt="Tests unitarios" width="50%">
 </p>
 
 <p align="center">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/TestUnitariosProductServiceCobertura.PNG?raw=true" alt="Cobertura de tests" width="50%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/TestUnitariosProductServiceCobertura.PNG?raw=true" alt="Cobertura de tests" width="50%">
 </p>
 
 ---
@@ -357,22 +357,22 @@ mvn test
 
 **Pantalla principal**
 <p align="center">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/PantallaPrincipal.PNG?raw=true" alt="Pantalla principal" width="75%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/PantallaPrincipal.PNG?raw=true" alt="Pantalla principal" width="75%">
 </p>
 
 **Inicio de sesión**
 <p align="center">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/InicioSesion.PNG?raw=true" alt="Inicio de sesión" width="75%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/InicioSesion.PNG?raw=true" alt="Inicio de sesión" width="75%">
 </p>
 
 **Registro**
 <p align="center">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/Registro.PNG?raw=true" alt="Registro" width="75%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/Registro.PNG?raw=true" alt="Registro" width="75%">
 </p>
 
 **Formulario de contacto**
 <p align="center">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/FormularioDeContacto.PNG?raw=true" alt="Formulario de contacto" width="75%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/FormularioDeContacto.PNG?raw=true" alt="Formulario de contacto" width="75%">
 </p>
 
 </details>
@@ -382,22 +382,22 @@ mvn test
 
 **Despensa**
 <p align="center">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/Despensa.PNG?raw=true" alt="Despensa" width="75%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/Despensa.PNG?raw=true" alt="Despensa" width="75%">
 </p>
 
 **Escáner de código de barras**
 <p align="center">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/Escaner.PNG?raw=true" alt="Escáner" width="75%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/Escaner.PNG?raw=true" alt="Escáner" width="75%">
 </p>
 
 **Lista de la compra**
 <p align="center">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/ListaDeLaCompra.PNG?raw=true" alt="Lista de la compra" width="75%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/ListaDeLaCompra.PNG?raw=true" alt="Lista de la compra" width="75%">
 </p>
 
 **Recetas**
 <p align="center">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/Recetas.PNG?raw=true" alt="Recetas" width="75%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/Recetas.PNG?raw=true" alt="Recetas" width="75%">
 </p>
 
 </details>
@@ -407,17 +407,17 @@ mvn test
 
 **Gestión de productos**
 <p align="center">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/AdminProductos.PNG?raw=true" alt="Admin productos" width="75%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/AdminProductos.PNG?raw=true" alt="Admin productos" width="75%">
 </p>
 
 **Productos personalizados**
 <p align="center">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/AdminProductosPersonalizados.PNG?raw=true" alt="Admin productos personalizados" width="75%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/AdminProductosPersonalizados.PNG?raw=true" alt="Admin productos personalizados" width="75%">
 </p>
 
 **Gestión de usuarios**
 <p align="center">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/AdminUsuarios.PNG?raw=true" alt="Admin usuarios" width="75%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/AdminUsuarios.PNG?raw=true" alt="Admin usuarios" width="75%">
 </p>
 
 </details>
@@ -426,9 +426,9 @@ mvn test
 <summary><strong>Vista Móvil</strong></summary>
 
 <p align="center">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/PantallaPrincipalMovil.PNG?raw=true" alt="Móvil principal" width="30%">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/DespensaMovil.PNG?raw=true" alt="Móvil despensa" width="30%">
-  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp-public/blob/main/images/ListaDeLaCompraMovil.PNG?raw=true" alt="Móvil lista compra" width="30%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/PantallaPrincipalMovil.PNG?raw=true" alt="Móvil principal" width="30%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/DespensaMovil.PNG?raw=true" alt="Móvil despensa" width="30%">
+  <img src="https://github.com/RubenToucedaPRO/springboot-mi-despensa-webapp/blob/main/images/ListaDeLaCompraMovil.PNG?raw=true" alt="Móvil lista compra" width="30%">
 </p>
 
 </details>
