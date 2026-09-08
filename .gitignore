@@ -36,7 +36,13 @@ Thumbs.db
 # Archivos sensibles y credenciales
 application.properties
 application.yml
-#.env
+.env
+.env.local
+.env.*.local
+*.p12
+*.jks
+*.pem
+*.key
 
 # Archivos de compilación de Java
 *.class
